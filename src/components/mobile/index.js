@@ -4,7 +4,6 @@ import { ageOptions, iAmOptions, locationOptions } from "../constants";
 import { TextField, MenuItem } from "@mui/material";
 import Password from "../password";
 
-
 import logo1 from "../../images/logo1.png";
 import logo2 from "../../images/logo2.png";
 
@@ -12,9 +11,9 @@ import "./styles.css";
 
 function Mobile() {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [label, setLabel] = useState("I am:");
-  const [password, setPassword]=useState('');
+  const [password, setPassword] = useState("");
   const [screen, setScreen] = useState({
     Iam: "I am:",
     myAge: "",
@@ -67,7 +66,9 @@ function Mobile() {
   };
   const checkEmail = () => {
     if (
-     email&&email!=='razd22'&&  !/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{1,4})+$/.test(
+      email &&
+      email !== "razd22" &&
+      !/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{1,4})+$/.test(
         email
       )
     ) {
@@ -79,14 +80,16 @@ function Mobile() {
       setError("");
     }
   };
-  useEffect(()=>{checkEmail()},[email])
+  useEffect(() => {
+    checkEmail();
+  }, [email]);
 
   const hadleEmailNextClick = () => {
-    if(!error || email==='razd22')
-       { 
-        setScreen({ ...screen, email: "", password: "My password: " });
-        setLabel("My password");}
-      };
+    if (!error || email === "razd22") {
+      setScreen({ ...screen, email: "", password: "My password: " });
+      setLabel("My password");
+    }
+  };
   const handlePasswordBackClick = () => {
     setScreen({ ...screen, email: "My email:", password: "" });
     setLabel("My email");
@@ -127,7 +130,7 @@ function Mobile() {
         throw error;
       });
   };
-  
+
   return (
     <>
       <div className="label-mobile-wrapper">
@@ -275,9 +278,9 @@ function Mobile() {
       {screen.email && (
         <>
           <TextField
-          value={email}
+            value={email}
             error={!!error}
-            onChange={ (e)=>   setEmail(e.target.value)     }
+            onChange={(e) => setEmail(e.target.value)}
             sx={{
               maxWidth: "216px",
               width: "100%",
@@ -307,16 +310,14 @@ function Mobile() {
                 },
               },
             }}
-          >
-          </TextField>
+          ></TextField>
           <p className="error-mobile">{error}</p>
         </>
       )}
 
-{
-    !!screen.password&&                    <Password mobile={true} password={password} setPassword={setPassword}/>
-
-}
+      {!!screen.password && (
+        <Password mobile={true} password={password} setPassword={setPassword} />
+      )}
       {!!screen.Iam && (
         <MyButton onClick={handleIamNextClick}>
           NEXT &#160; &#160; &#62;
@@ -360,44 +361,46 @@ function Mobile() {
           <MyButton onClick={handlePasswordBackClick}>
             &#60; &#160; &#160;BACK
           </MyButton>
-          <MyButton onClick={handleStartClick}>START!&#160; &#160; &#62;</MyButton>
+          <MyButton onClick={handleStartClick}>
+            START!&#160; &#160; &#62;
+          </MyButton>
         </div>
       )}
 
       <div className="logo-wrapper-mobile">
         {!!screen.Iam && (
           <>
-            <img src={logo1} /> <img src={logo2} /> <img src={logo2} />
-            <img src={logo2} />
-            <img src={logo2} />
+            <img src={logo1}  alt='logo1' /> <img src={logo2}  alt='logo2'/> <img src={logo2}  alt='logo2' />
+            <img src={logo2}  alt='logo2'/>
+            <img src={logo2}   alt='logo2'/>
           </>
         )}
         {!!screen.myAge && (
           <>
-            <img src={logo1} /> <img src={logo1} /> <img src={logo2} />
-            <img src={logo2} />
-            <img src={logo2} />
-          </>
+            <img src={logo1}  alt='logo1'/> <img src={logo1}  alt='logo1' /> <img src={logo2}  alt='logo2' />
+            <img src={logo2}   alt='logo2'/>
+            <img src={logo2}  alt='logo2' />
+          </> 
         )}{" "}
         {!!screen.location && (
           <>
-            <img src={logo1} /> <img src={logo1} /> <img src={logo1} />
-            <img src={logo2} />
-            <img src={logo2} />
+            <img src={logo1}  alt='logo1'/> <img src={logo1}  alt='logo1' /> <img src={logo1}  alt='logo1'/>
+            <img src={logo2}  alt='logo2'/>
+            <img src={logo2}  alt='logo2'/>
           </>
         )}{" "}
         {!!screen.email && (
           <>
             <img src={logo1} /> <img src={logo1} /> <img src={logo1} />
             <img src={logo1} />
-            <img src={logo2} />
+            <img src={logo2}  alt='logo2' />
           </>
         )}{" "}
         {!!screen.password && (
           <>
-            <img src={logo1} /> <img src={logo1} /> <img src={logo1} />
-            <img src={logo1} />
-            <img src={logo1} />
+            <img src={logo1}  alt='logo1'/> <img src={logo1}  alt='logo1'/> <img src={logo1}  alt='logo1' />
+            <img src={logo1}  alt='logo1'/>
+            <img src={logo1}  alt='logo1'/>
           </>
         )}
       </div>

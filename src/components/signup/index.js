@@ -140,7 +140,7 @@ function SignUp() {
         <div className="wid">
           {!matches && (
             <div>
-              <img src={navBar} className="hamburger-mobile" />
+              <img src={navBar} className="hamburger-mobile" alt='hamburger mobile'/>
             </div>
           )}{" "}
           <div className="start-wrapper">
@@ -284,7 +284,7 @@ function SignUp() {
               src={navBar}
               alt="nav-humburger"
             ></img>
-            <img className="pic" width={539} height={799} src={pic} />
+            <img className="pic" alt='picture of a couple and logos'width={539} height={799} src={pic} />
           </div>
         </div>
       </ThemeProvider>
